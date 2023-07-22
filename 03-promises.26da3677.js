@@ -1,0 +1,2 @@
+!function(){var o,n;(o=5,n=1e3,new Promise((function(e,i){return setTimeout((function(){Math.random()>.3?e({position:o,delay:n}):i({position:o,delay:n})}),1e3)}))).then((function(o){var n=o.position,e=o.delay;console.log("✅ Fulfilled promise ".concat(n," in ").concat(e,"ms"))})).catch((function(o){var n=o.position,e=o.delay;console.log("❌ Rejected promise ".concat(n," in ").concat(e,"ms"))}))}();
+//# sourceMappingURL=03-promises.26da3677.js.map
