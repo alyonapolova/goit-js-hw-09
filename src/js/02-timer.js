@@ -11,7 +11,7 @@ const refs = {
   dataSec: document.querySelector('[data-seconds]'),
 };
 
-refs.startBtn.disabled = false;
+refs.startBtn.disabled = true;
 
 const timer = {
   intervalId: null,
@@ -24,6 +24,7 @@ const timer = {
     const chosenDate = flatpickrEl.selectedDates[0].getTime();
 
     this.isActive = true;
+    refs.startBtn.disabled = true;
     this.intervalId = setInterval(() => {
       const currentDate = Date.now();
       const deltaTime = chosenDate - currentDate;

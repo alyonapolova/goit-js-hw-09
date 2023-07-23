@@ -22,14 +22,13 @@ function formComplete(event) {
   event.preventDefault();
   const formElements = event.target;
 
-  let delay = Number(formElements.elements['delay'].value);
-  let step = Number(formElements.elements['step'].value);
-  let amount = Number(formElements.elements['amount'].value);
-  //console.log(typeof delay);
+  const delay = Number(formElements.elements['delay'].value);
+  const step = Number(formElements.elements['step'].value);
+  const amount = Number(formElements.elements['amount'].value);
 
   for (let i = 0; i < amount; i += 1) {
-    //console.log('i:', i);
-    createPromise(i + 1, delay * i + step)
+    let currentDelay = step !== 0 ? delay + i * step : delay;
+    createPromise(i + 1, currentDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
