@@ -3,13 +3,17 @@ const refs = {
   stopBtn: document.querySelector('[data-stop]'),
   body: document.querySelector('body'),
 };
-//console.log(refs);
+
+console.log(refs.startBtn);
+console.log(refs.stopBtn);
 
 refs.startBtn.addEventListener('click', changeBodyColor);
 refs.stopBtn.addEventListener('click', stopChangeBodyColor);
 
 let intervalId = null;
 let isActive = false;
+refs.startBtn.disabled = false;
+refs.stopBtn.disabled = true;
 
 function changeBodyColor() {
   const color = getRandomHexColor();
@@ -19,6 +23,8 @@ function changeBodyColor() {
   }
 
   isActive = true;
+  refs.startBtn.disabled = true;
+  refs.stopBtn.disabled = false;
 
   intervalId = setInterval(() => {
     refs.body.style.backgroundColor = getRandomHexColor();
@@ -30,7 +36,8 @@ function changeBodyColor() {
 function stopChangeBodyColor() {
   clearInterval(intervalId);
   isActive = false;
-
+  refs.startBtn.disabled = false;
+  refs.stopBtn.disabled = true;
   console.log('Interval ID:', intervalId);
 }
 
